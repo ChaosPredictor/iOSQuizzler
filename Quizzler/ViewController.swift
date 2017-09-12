@@ -36,13 +36,12 @@ class ViewController: UIViewController {
             pickedAnswer = false
         }
         
-        if questionNumber < 12 {
-            checkAnswer()
-            questionNumber = questionNumber + 1
-        }
+        checkAnswer()
 
-        
-        questionLabel.text = allQuestion.list[questionNumber].questionText
+        questionNumber = questionNumber + 1
+
+        nextQuestion()
+
     }
     
     
@@ -51,8 +50,18 @@ class ViewController: UIViewController {
     }
     
 
-    func nextQuestion() {
-        
+    func nextQuestion(){
+        if questionNumber < 12 {
+            questionLabel.text = allQuestion.list[questionNumber].questionText
+        } else {
+            let alert = UIAlertController(title: "Done", message: "A new one?", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
+                self.startOver()
+            })
+            alert.addAction(restartAction)
+            
+            present(alert, animated: true, completion: nil )
+        }
     }
     
     
@@ -68,7 +77,8 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+        questionNumber = 0
+        nextQuestion()
     }
     
 
