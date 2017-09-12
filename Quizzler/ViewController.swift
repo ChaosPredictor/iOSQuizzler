@@ -36,9 +36,11 @@ class ViewController: UIViewController {
             pickedAnswer = false
         }
         
-        checkAnswer()
-        
-        questionNumber = questionNumber + 1
+        if questionNumber < 12 {
+            checkAnswer()
+            questionNumber = questionNumber + 1
+        }
+
         
         questionLabel.text = allQuestion.list[questionNumber].questionText
     }
