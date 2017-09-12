@@ -40,20 +40,22 @@ class ViewController: UIViewController {
 
         questionNumber = questionNumber + 1
 
-        updateUI()
         nextQuestion()
     }
     
     
     func updateUI() {
         scoreLabel.text = "Score: \(score)"
-      
+        progressLabel.text = "\(questionNumber + 1)/13"
+        progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
     }
     
 
     func nextQuestion(){
         if questionNumber < 12 {
             questionLabel.text = allQuestion.list[questionNumber].questionText
+            updateUI()
+
         } else {
             let alert = UIAlertController(title: "Done", message: "A new one?", preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
