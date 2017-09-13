@@ -37,9 +37,7 @@ class ViewController: UIViewController {
         }
         
         checkAnswer()
-
         questionNumber = questionNumber + 1
-
         nextQuestion()
     }
     
@@ -62,8 +60,8 @@ class ViewController: UIViewController {
                 self.startOver()
             })
             alert.addAction(restartAction)
-            
             present(alert, animated: true, completion: nil )
+            score = 0
         }
     }
     
