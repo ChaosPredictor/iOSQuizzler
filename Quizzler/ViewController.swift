@@ -61,7 +61,6 @@ class ViewController: UIViewController {
             })
             alert.addAction(restartAction)
             present(alert, animated: true, completion: nil )
-            score = 0
         }
     }
     
@@ -71,14 +70,17 @@ class ViewController: UIViewController {
         
         if correctAnswer == pickedAnswer {
             score += 1
+            ProgressHUD.showSuccess("You are right")
 //            print("you right")
         } else {
+            ProgressHUD.showError("Wrong")
             print("wrong")
         }
     }
     
     
     func startOver() {
+        score = 0
         questionNumber = 0
         nextQuestion()
     }
